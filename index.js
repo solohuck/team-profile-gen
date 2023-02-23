@@ -6,7 +6,7 @@ const path = require('path');
 const fs = require('fs');
 
 const distFinish = path.resolve(__dirname, 'dist');
-const htmlFinish = path.join(htmlFinish, 'finish.html');
+const htmlFinish = path.join(distFinish, 'finish.html');
 
 const render = require('./Lib/htmlRender');
 
@@ -143,11 +143,11 @@ function internPrompt() {
 }
 
 function htmlFile() {
-  if (!fs.existsSync(finsihDist)) {
-    fs.mkdirSync(finishDist);
+  if (!fs.existsSync(distFinish)) {
+    fs.mkdirSync(distFinish);
   } else {
 
-    fs.writeFileSync(finsihHtml, render(member), "UTF-8");
+    fs.writeFileSync(htmlFinish, render(member), "UTF-8");
     console.log("Done! Go to 'finish.html' ");
   }
   
