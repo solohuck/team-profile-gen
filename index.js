@@ -103,7 +103,55 @@ function addMember() {
       } else if (val.addMem === "intern") {
         internPrompt();
       } else {
-        makeHtmlFile();
+        htmlFile();
       }
     });
 };
+
+function internPrompt() {
+  inquirer
+    .prompt([
+
+      {
+          type: "input",
+          name: "id",
+          message: "intern id#:",
+      },
+      {
+        type: "input",
+        name: "name",
+        message: "interns name?",
+      },
+      {
+        type: "input",
+        name: "email",
+        message: "interns email:",
+      },
+      {
+        type: "input",
+        name: "school",
+        message: "interns past or current school?",
+      },
+    ])
+
+    .then((val) => {
+      const Intern = new intern(val.name, val.id, val.email, val.school);
+      console.table(Intern)
+      member.push(Intern);
+      addMember();
+    });
+}
+
+function htmlFile() {
+  if (!fs.existsSync(finsihDist)) {
+    fs.mkdirSync(finishDist);
+  } else {
+
+    fs.writeFileSync(finsihHtml, render(member), "UTF-8");
+    console.log("Done! Go to 'finish.html' ");
+  }
+  
+}
+
+
+start();
