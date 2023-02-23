@@ -1,0 +1,28 @@
+{
+  "name": "teamprofilegen",
+  "version": "1.0.0",
+  "description": "Command line app for profile generator",
+  "main": "index.js",
+  "directories": {
+    "Lib": "Lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solohuck/TeamProfileGenerator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/solohuck/TeamProfileGenerator/issues"
+  },
+  "homepage": "https://github.com/solohuck/TeamProfileGenerator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
