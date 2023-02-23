@@ -14,7 +14,7 @@ const member = [];
 
 function start() {
     managerPrompt()
-}
+};
 
 function managerPrompt() {
   inquirer
@@ -53,4 +53,57 @@ function managerPrompt() {
     addMember();
   });
 
+};
+
+function engineerPrompt() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "name",
+        message: "engineers name?",
+      },
+      {
+        type: "input",
+        name: "email",
+        message: "engineers email:",
+      },
+      {
+        type: "input",
+        name: "id",
+        message: "engineers id#:",
+      },
+      {
+        type: "input",
+        name: "github",
+        message: "engineers gitHub username?",
+      },
+    ])
+    .then((val) => {
+      const Engineer = new engineer(val.name, val.id, val.email, val.github);
+      console.table(Engineer);
+      member.push(Engineer);
+      addMember();
+    });
+};
+
+function addMember() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "addMem",
+        message: "Add an engineer or intern?",
+        choices: ["engineer", "intern", "no"],
+      },
+    ])
+    .then((val) => {
+      if (val.addMem === "engineer") {
+        engineerPrompt();
+      } else if (val.addMem === "intern") {
+        internPrompt();
+      } else {
+        makeHtmlFile();
+      }
+    });
 };
